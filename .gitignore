@@ -16,3 +16,9 @@ node_modules/
 
 .DS_Store
 .env
+
+# OS/editor noise.
+.DS_Store
+.idea/
+.vscode/
+.PLAN/

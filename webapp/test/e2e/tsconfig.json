@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+    "ignoreDeprecations": "6.0",
+    "types": [
+      "node",
+      "@openui5/types",
+      "@wdio/globals/types",
+      "@wdio/mocha-framework",
+      "wdio-ui5-service/esm"
+    ]
+  }
+}
