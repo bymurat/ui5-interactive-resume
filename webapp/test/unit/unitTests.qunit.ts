@@ -1,2 +1,3 @@
 // import all your QUnit tests here
-import "./controller/Main.qunit";
+// (real unit tests will be added with the resume data model and formatters)
+export {};

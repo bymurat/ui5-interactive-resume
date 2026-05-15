@@ -1,0 +1,155 @@
+<mvc:View
+	controllerName="ui5.interactive.resume.controller.Resume"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:uxap="sap.uxap">
+
+	<Page
+		id="resumeHostPage"
+		showHeader="false"
+		enableScrolling="false">
+		<content>
+			<uxap:ObjectPageLayout
+				id="resumePage"
+				showFooter="false"
+				showTitleInHeaderContent="true">
+
+				<uxap:headerTitle>
+					<uxap:ObjectPageDynamicHeaderTitle>
+						<uxap:expandedHeading>
+							<HBox alignItems="Baseline">
+								<Title
+									text="{i18n>profileFirstName}"
+									level="H2" />
+								<Title
+									text="{i18n>profileLastName}"
+									level="H1"
+									class="sapUiTinyMarginBegin" />
+							</HBox>
+						</uxap:expandedHeading>
+						<uxap:snappedHeading>
+							<HBox alignItems="Baseline">
+								<Title
+									text="{i18n>profileFirstName}"
+									level="H3" />
+								<Title
+									text="{i18n>profileLastName}"
+									level="H2"
+									class="sapUiTinyMarginBegin" />
+							</HBox>
+						</uxap:snappedHeading>
+						<uxap:expandedContent>
+							<Text text="{i18n>profileTitle}" />
+						</uxap:expandedContent>
+						<uxap:snappedContent>
+							<Text text="{i18n>profileTitle}" />
+						</uxap:snappedContent>
+						<uxap:actions>
+							<Button
+								text="{i18n>contactAction}"
+								type="Emphasized"
+								icon="sap-icon://email" />
+							<Button
+								text="{i18n>downloadPdf}"
+								icon="sap-icon://pdf-attachment" />
+						</uxap:actions>
+					</uxap:ObjectPageDynamicHeaderTitle>
+				</uxap:headerTitle>
+
+				<uxap:headerContent>
+					<Avatar
+						displayShape="Circle"
+						displaySize="XL"
+						initials="MA" />
+					<VBox class="sapUiSmallMarginBegin">
+						<ObjectStatus
+							text="{i18n>availability}"
+							state="Success" />
+						<Text text="{i18n>profileIntro}" />
+					</VBox>
+				</uxap:headerContent>
+
+				<uxap:sections>
+					<uxap:ObjectPageSection
+						id="overviewSection"
+						title="{i18n>sectionOverview}">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection title="{i18n>sectionOverview}">
+								<uxap:blocks>
+									<VBox class="sapUiSmallMarginBottom">
+										<Title
+											text="{i18n>overviewTitle}"
+											level="H3" />
+										<Text text="{i18n>overviewText}" />
+									</VBox>
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection
+						id="timelineSection"
+						title="{i18n>sectionTimeline}"
+						importance="High">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection title="{i18n>timelineSubsection}">
+								<uxap:blocks>
+									<VBox>
+										<Title
+											text="{i18n>timelineTitle}"
+											level="H3" />
+										<Text text="{i18n>timelineText}" />
+										<Button
+											text="{i18n>openTimeline}"
+											type="Emphasized"
+											icon="sap-icon://full-screen"
+											class="sapUiTinyMarginTop" />
+									</VBox>
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection
+						id="skillsSection"
+						title="{i18n>sectionSkills}">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection title="{i18n>sectionSkills}">
+								<uxap:blocks>
+									<HBox wrap="Wrap">
+										<GenericTag text="SAP UI5" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" />
+										<GenericTag text="OpenUI5" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" />
+										<GenericTag text="Fiori" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" />
+										<GenericTag text="TypeScript" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" />
+										<GenericTag text="OData" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" />
+									</HBox>
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection
+						id="contactSection"
+						title="{i18n>sectionContact}">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection title="{i18n>sectionContact}">
+								<uxap:blocks>
+									<VBox>
+										<Text text="{i18n>contactText}" />
+										<Button
+											text="{i18n>contactAction}"
+											icon="sap-icon://email"
+											class="sapUiTinyMarginTop" />
+									</VBox>
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+				</uxap:sections>
+
+			</uxap:ObjectPageLayout>
+		</content>
+	</Page>
+
+</mvc:View>
