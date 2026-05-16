@@ -1,0 +1,109 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	core:require="{
+		formatter: 'ui5/interactive/resume/model/formatter'
+	}">
+
+	<Popover
+		placement="Auto"
+		contentWidth="22rem"
+		showHeader="true"
+		title="{phaseDetail>/role}">
+
+		<VBox class="sapUiSmallMargin">
+			<HBox alignItems="Center" class="sapUiTinyMarginBottom">
+				<core:Icon
+					src="sap-icon://business-card"
+					class="sapUiTinyMarginEnd" />
+				<Text text="{phaseDetail>/client} · via {phaseDetail>/employer}" />
+			</HBox>
+
+			<ObjectStatus
+				text="{phaseDetail>/team}"
+				class="sapUiTinyMarginBottom" />
+
+			<HBox wrap="Wrap" alignItems="Center" class="sapUiTinyMarginBottom">
+				<ObjectStatus
+					text="{ path: 'phaseDetail>/hat', formatter: 'formatter.hatLabel' }"
+					state="{ path: 'phaseDetail>/hat', formatter: 'formatter.hatState' }"
+					class="sapUiTinyMarginEnd" />
+				<HBox wrap="Wrap" items="{phaseDetail>/additionalHats}">
+					<ObjectStatus
+						text="{ path: 'phaseDetail>', formatter: 'formatter.hatLabel' }"
+						state="{ path: 'phaseDetail>', formatter: 'formatter.hatState' }"
+						class="sapUiTinyMarginEnd" />
+				</HBox>
+			</HBox>
+
+			<HBox alignItems="Center" class="sapUiTinyMarginBottom">
+				<core:Icon
+					src="sap-icon://calendar"
+					class="sapUiTinyMarginEnd" />
+				<Text
+					text="{
+						parts: [
+							{ path: 'phaseDetail>/start' },
+							{ path: 'phaseDetail>/end' },
+							{ path: 'phaseDetail>/current' }
+						],
+						formatter: 'formatter.dateRange'
+					}" />
+				<Text
+					text=" · "
+					class="sapUiTinyMarginBegin sapUiTinyMarginEnd" />
+				<Text
+					text="{
+						parts: [
+							{ path: 'phaseDetail>/start' },
+							{ path: 'phaseDetail>/end' },
+							{ path: 'phaseDetail>/current' }
+						],
+						formatter: 'formatter.durationMonths'
+					}" />
+			</HBox>
+
+			<Text
+				text="{phaseDetail>/summary}"
+				class="sapUiSmallMarginBottom" />
+
+			<Title
+				text="Highlights"
+				level="H5"
+				class="sapUiTinyMarginBottom" />
+			<List
+				items="{phaseDetail>/achievements}"
+				showSeparators="None"
+				class="sapUiTinyMarginBottom">
+				<CustomListItem>
+					<HBox alignItems="Start" class="sapUiTinyMarginBegin sapUiTinyMarginEnd">
+						<core:Icon
+							src="sap-icon://accept"
+							class="sapUiTinyMarginEnd sapUiTinyMarginTop" />
+						<Text text="{phaseDetail>}" />
+					</HBox>
+				</CustomListItem>
+			</List>
+
+			<Title
+				text="Technologies"
+				level="H5"
+				class="sapUiTinyMarginBottom" />
+			<HBox wrap="Wrap" items="{phaseDetail>/technologies}">
+				<GenericTag
+					text="{phaseDetail>}"
+					class="sapUiTinyMarginEnd sapUiTinyMarginBottom" />
+			</HBox>
+		</VBox>
+
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer />
+				<Button
+					text="Close"
+					press=".onClosePopover" />
+			</OverflowToolbar>
+		</footer>
+	</Popover>
+
+</core:FragmentDefinition>

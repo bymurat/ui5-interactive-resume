@@ -7,8 +7,9 @@
   "type": "module",
   "scripts": {
     "clean": "rimraf dist coverage",
-    "build": "ui5 build --clean-dest",
-    "build:opt": "ui5 build self-contained --clean-dest --all",
+    "inject-seo": "node scripts/inject-seo.mjs",
+    "build": "ui5 build --clean-dest && npm run inject-seo",
+    "build:opt": "ui5 build self-contained --clean-dest --all && npm run inject-seo",
     "start": "ui5 serve --port 8080 -o index.html",
     "start-cdn": "ui5 serve --port 8080 -o index-cdn.html",
     "start-coverage": "ui5 serve --port 8080 --config ui5-coverage.yaml",

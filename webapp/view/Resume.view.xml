@@ -3,7 +3,12 @@
 	displayBlock="true"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:uxap="sap.uxap">
+	xmlns:core="sap.ui.core"
+	xmlns:uxap="sap.uxap"
+	xmlns:rgc="ui5.interactive.resume.control"
+	core:require="{
+		formatter: 'ui5/interactive/resume/model/formatter'
+	}">
 
 	<Page
 		id="resumeHostPage"
@@ -20,10 +25,10 @@
 						<uxap:expandedHeading>
 							<HBox alignItems="Baseline">
 								<Title
-									text="{i18n>profileFirstName}"
+									text="{resume>/profile/firstName}"
 									level="H2" />
 								<Title
-									text="{i18n>profileLastName}"
+									text="{resume>/profile/lastName}"
 									level="H1"
 									class="sapUiTinyMarginBegin" />
 							</HBox>
@@ -31,46 +36,57 @@
 						<uxap:snappedHeading>
 							<HBox alignItems="Baseline">
 								<Title
-									text="{i18n>profileFirstName}"
+									text="{resume>/profile/firstName}"
 									level="H3" />
 								<Title
-									text="{i18n>profileLastName}"
+									text="{resume>/profile/lastName}"
 									level="H2"
 									class="sapUiTinyMarginBegin" />
 							</HBox>
 						</uxap:snappedHeading>
 						<uxap:expandedContent>
-							<Text text="{i18n>profileTitle}" />
+							<Text text="{resume>/profile/title}" />
 						</uxap:expandedContent>
 						<uxap:snappedContent>
-							<Text text="{i18n>profileTitle}" />
+							<Text text="{resume>/profile/title}" />
 						</uxap:snappedContent>
 						<uxap:actions>
 							<Button
 								text="{i18n>contactAction}"
 								type="Emphasized"
-								icon="sap-icon://email" />
+								icon="sap-icon://email"
+								press=".onContactPress" />
 							<Button
 								text="{i18n>downloadPdf}"
-								icon="sap-icon://pdf-attachment" />
+								icon="sap-icon://pdf-attachment"
+								press=".onDownloadPdfPress" />
 						</uxap:actions>
 					</uxap:ObjectPageDynamicHeaderTitle>
 				</uxap:headerTitle>
 
 				<uxap:headerContent>
-					<Avatar
-						displayShape="Circle"
-						displaySize="XL"
-						initials="MA" />
-					<VBox class="sapUiSmallMarginBegin">
-						<ObjectStatus
-							text="{i18n>availability}"
-							state="Success" />
-						<Text text="{i18n>profileIntro}" />
-					</VBox>
+					<HBox alignItems="Center">
+						<Avatar
+							displayShape="Circle"
+							displaySize="XL"
+							src="{resume>/profile/avatarSrc}"
+							initials="{resume>/profile/avatarInitials}"
+							class="sapUiMediumMarginEnd" />
+						<VBox>
+							<ObjectStatus
+								text="{resume>/profile/availability}"
+								state="Success"
+								class="sapUiTinyMarginBottom" />
+							<Text text="{resume>/profile/intro}" />
+							<Text
+								text="{resume>/profile/location}"
+								class="sapUiTinyMarginTop" />
+						</VBox>
+					</HBox>
 				</uxap:headerContent>
 
 				<uxap:sections>
+
 					<uxap:ObjectPageSection
 						id="overviewSection"
 						title="{i18n>sectionOverview}">
@@ -81,7 +97,7 @@
 										<Title
 											text="{i18n>overviewTitle}"
 											level="H3" />
-										<Text text="{i18n>overviewText}" />
+										<Text text="{resume>/summary}" />
 									</VBox>
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>
@@ -96,15 +112,68 @@
 							<uxap:ObjectPageSubSection title="{i18n>timelineSubsection}">
 								<uxap:blocks>
 									<VBox>
-										<Title
-											text="{i18n>timelineTitle}"
-											level="H3" />
-										<Text text="{i18n>timelineText}" />
-										<Button
-											text="{i18n>openTimeline}"
-											type="Emphasized"
-											icon="sap-icon://full-screen"
-											class="sapUiTinyMarginTop" />
+										<Toolbar design="Transparent" class="sapUiTinyMarginBottom">
+											<ToolbarSpacer />
+											<Button
+												text="{i18n>openTimeline}"
+												icon="sap-icon://full-screen"
+												press=".onOpenTimelinePress" />
+										</Toolbar>
+
+										<ScrollContainer
+											height="30rem"
+											vertical="true"
+											horizontal="false"
+											width="100%">
+											<rgc:ResumeGantt
+											id="resumeGanttInline"
+											rowHeight="42"
+											employers="{resume>/timeline/employers}"
+											phasePress=".onPhasePress">
+											<rgc:employers>
+												<rgc:ResumeGanttEmployer
+													employerId="{resume>id}"
+													name="{resume>name}"
+													kind="{resume>kind}"
+													country="{resume>country}"
+													countryEmoji="{resume>countryEmoji}"
+													city="{resume>city}"
+													start="{resume>start}"
+													end="{resume>end}"
+													current="{resume>current}"
+													engagements="{resume>engagements}">
+													<rgc:engagements>
+														<rgc:ResumeGanttEngagement
+															engagementId="{resume>id}"
+															client="{resume>client}"
+															department="{resume>department}"
+															city="{resume>city}"
+															clientLogoIcon="{resume>clientLogoIcon}"
+															start="{resume>start}"
+															end="{resume>end}"
+															current="{resume>current}"
+															parallel="{resume>parallel}"
+															phases="{resume>phases}">
+															<rgc:phases>
+																<rgc:ResumeGanttPhase
+																	phaseId="{resume>id}"
+																	team="{resume>team}"
+																	role="{resume>role}"
+																	hat="{resume>hat}"
+																	additionalHats="{resume>additionalHats}"
+																	start="{resume>start}"
+																	end="{resume>end}"
+																	current="{resume>current}"
+																	summary="{resume>summary}"
+																	achievements="{resume>achievements}"
+																	technologies="{resume>technologies}" />
+															</rgc:phases>
+														</rgc:ResumeGanttEngagement>
+													</rgc:engagements>
+												</rgc:ResumeGanttEmployer>
+											</rgc:employers>
+										</rgc:ResumeGantt>
+										</ScrollContainer>
 									</VBox>
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>
@@ -113,19 +182,116 @@
 
 					<uxap:ObjectPageSection
 						id="skillsSection"
-						title="{i18n>sectionSkills}">
+						title="{i18n>sectionSkills}"
+						subSections="{resume>/skills}">
 						<uxap:subSections>
-							<uxap:ObjectPageSubSection title="{i18n>sectionSkills}">
+							<uxap:ObjectPageSubSection title="{resume>title}">
 								<uxap:blocks>
-									<HBox wrap="Wrap">
-										<GenericTag text="SAP UI5" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" />
-										<GenericTag text="OpenUI5" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" />
-										<GenericTag text="Fiori" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" />
-										<GenericTag text="TypeScript" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" />
-										<GenericTag text="OData" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" />
+									<HBox wrap="Wrap" items="{resume>skills}">
+										<GenericTag
+											text="{resume>name}"
+											class="sapUiTinyMarginEnd sapUiTinyMarginBottom" />
 									</HBox>
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection
+						id="backgroundSection"
+						title="{i18n>sectionBackground}">
+						<uxap:subSections>
+
+							<uxap:ObjectPageSubSection title="{i18n>subEducation}">
+								<uxap:blocks>
+									<List
+										items="{resume>/education}"
+										showSeparators="Inner"
+										noDataText="No education entries yet.">
+										<CustomListItem>
+											<HBox alignItems="Center" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginTop sapUiTinyMarginBottom">
+												<Avatar
+													src="{resume>logoSrc}"
+													fallbackIcon="sap-icon://education"
+													displayShape="Square"
+													displaySize="S"
+													class="sapUiSmallMarginEnd" />
+												<VBox>
+													<Title
+														text="{resume>degree} · {resume>field}"
+														level="H5" />
+													<Link
+														text="{resume>institution}"
+														href="{resume>url}"
+														target="_blank"
+														visible="{ path: 'resume>url', formatter: 'formatter.hasValue' }" />
+													<Text
+														text="{resume>institution}"
+														visible="{= !${resume>url} }" />
+													<Text
+														text="{
+															parts: [
+																{ path: 'resume>start' },
+																{ path: 'resume>end' },
+																{ value: false }
+															],
+															formatter: 'formatter.dateRange'
+														} · {resume>city}"
+														class="sapUiTinyMarginTop" />
+												</VBox>
+											</HBox>
+										</CustomListItem>
+									</List>
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+
+							<uxap:ObjectPageSubSection title="{i18n>subCertifications}">
+								<uxap:blocks>
+									<List
+										items="{resume>/certifications}"
+										showSeparators="Inner"
+										noDataText="No certifications yet.">
+										<CustomListItem>
+											<HBox alignItems="Center" justifyContent="SpaceBetween" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginTop sapUiTinyMarginBottom">
+												<HBox alignItems="Center">
+													<core:Icon
+														src="sap-icon://expert"
+														class="sapUiSmallMarginEnd" />
+													<VBox>
+														<Title
+															text="{resume>name}"
+															level="H5" />
+														<Text
+															text="{resume>issuer} · { path: 'resume>issued', formatter: 'formatter.monthYear' } · {resume>city}" />
+													</VBox>
+												</HBox>
+												<Link
+													text="{i18n>verifyCredential}"
+													href="{resume>verifyUrl}"
+													target="_blank"
+													visible="{ path: 'resume>verifyUrl', formatter: 'formatter.hasValue' }"
+													icon="sap-icon://action" />
+											</HBox>
+										</CustomListItem>
+									</List>
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+
+							<uxap:ObjectPageSubSection title="{i18n>subLanguages}">
+								<uxap:blocks>
+									<List
+										items="{resume>/languages}"
+										showSeparators="Inner"
+										noDataText="No languages yet.">
+										<StandardListItem
+											icon="sap-icon://world"
+											title="{resume>name}"
+											info="{resume>level}"
+											infoState="Information" />
+									</List>
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+
 						</uxap:subSections>
 					</uxap:ObjectPageSection>
 
@@ -136,16 +302,25 @@
 							<uxap:ObjectPageSubSection title="{i18n>sectionContact}">
 								<uxap:blocks>
 									<VBox>
-										<Text text="{i18n>contactText}" />
-										<Button
-											text="{i18n>contactAction}"
-											icon="sap-icon://email"
-											class="sapUiTinyMarginTop" />
+										<Text
+											text="{i18n>contactText}"
+											class="sapUiSmallMarginBottom" />
+										<List
+											items="{resume>/contact/channels}"
+											showSeparators="Inner">
+											<StandardListItem
+												icon="{resume>icon}"
+												title="{resume>label}"
+												description="{resume>value}"
+												type="Active"
+												press=".onContactChannelPress" />
+										</List>
 									</VBox>
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>
 						</uxap:subSections>
 					</uxap:ObjectPageSection>
+
 				</uxap:sections>
 
 			</uxap:ObjectPageLayout>

@@ -1,0 +1,713 @@
+{
+  "profile": {
+    "firstName": "Murat",
+    "lastName": "AYDOĞDU",
+    "title": "SAP Technical Consultant — SAP UI5 / Fiori / CAP",
+    "intro": "SAP Technical Consultant with 10+ years across SAPUI5, SAP Fiori, SAP CAP, and SAP BTP. Delivered customer-facing and internal apps for SAP Private Cloud (ECS), AML/KYC compliance for Clearstream, and SAP-internal API platforms via Accenture. Comfortable across frontend, backend, and CI/CD-driven delivery.",
+    "availability": "Available for selected opportunities",
+    "location": "Luxembourg",
+    "avatarInitials": "MA",
+    "avatarSrc": "assets/profile-photo.jpeg"
+  },
+  "summary": "I started working with SAP technologies in 2013 in Istanbul and have grown from a SAPUI5- and SAP Agentry-focused mobility consultant into a full-stack SAP cloud application developer. Over the last seven years — at Accenture in Riga and then at 4Dev in Luxembourg — I have deepened my expertise in SAP CAP, SAP BTP, TypeScript, Fiori Elements, and metadata-driven UIs while contributing to SAP SE and Clearstream programmes. My day-to-day work spans frontend, backend, and platform integration on SAP BTP, with strong Git, Jira, and GitHub Actions CI/CD practice in Agile teams.",
+  "skills": [
+    {
+      "id": "frontend",
+      "title": "Frontend",
+      "skills": [
+        {
+          "name": "SAPUI5 / OpenUI5",
+          "years": 12
+        },
+        {
+          "name": "SAP Fiori",
+          "years": 10
+        },
+        {
+          "name": "SAP Fiori Elements",
+          "years": 6
+        },
+        {
+          "name": "TypeScript",
+          "years": 5
+        },
+        {
+          "name": "JavaScript (ES6+)",
+          "years": 12
+        },
+        {
+          "name": "Luigi micro-frontends",
+          "years": 3
+        }
+      ]
+    },
+    {
+      "id": "backend",
+      "title": "Backend & Platform",
+      "skills": [
+        {
+          "name": "SAP CAP",
+          "years": 6
+        },
+        {
+          "name": "SAP BTP",
+          "years": 6
+        },
+        {
+          "name": "Node.js",
+          "years": 9
+        },
+        {
+          "name": "Effect Framework",
+          "years": 2
+        },
+        {
+          "name": "OData v2 / v4",
+          "years": 10
+        },
+        {
+          "name": "SAP HANA",
+          "years": 6
+        },
+        {
+          "name": "Redis",
+          "years": 3
+        }
+      ]
+    },
+    {
+      "id": "delivery",
+      "title": "Delivery, QA & Tooling",
+      "skills": [
+        {
+          "name": "Git / GitHub Enterprise",
+          "years": 10
+        },
+        {
+          "name": "GitHub Actions / Jenkins CI",
+          "years": 5
+        },
+        {
+          "name": "Jira / Agile",
+          "years": 10
+        },
+        {
+          "name": "QUnit / OPA5 / Karma",
+          "years": 7
+        },
+        {
+          "name": "SonarQube",
+          "years": 4
+        },
+        {
+          "name": "UI5 Tooling",
+          "years": 5
+        }
+      ]
+    },
+    {
+      "id": "legacy",
+      "title": "SAP Mobility (earlier career)",
+      "skills": [
+        {
+          "name": "SAP Agentry",
+          "years": 5
+        },
+        {
+          "name": "SAP Work Manager",
+          "years": 4
+        },
+        {
+          "name": "SAP NetWeaver Developer Studio",
+          "years": 4
+        }
+      ]
+    }
+  ],
+  "timeline": {
+    "employers": [
+      {
+        "id": "4dev",
+        "name": "4Dev SARL",
+        "kind": "consultancy",
+        "country": "Luxembourg",
+        "countryEmoji": "🇱🇺",
+        "city": "Luxembourg, LU",
+        "start": "2021-03",
+        "end": null,
+        "current": true,
+        "engagements": [
+          {
+            "id": "sap-se-via-4dev",
+            "client": "SAP SE",
+            "department": "Enterprise Cloud Services — Private Cloud (ECS)",
+            "city": "Walldorf, DE (Remote)",
+            "clientLogoIcon": "sap-icon://sap-logo-shape",
+            "start": "2021-11",
+            "end": "2026-02",
+            "current": false,
+            "phases": [
+              {
+                "id": "sap-ecs-frontend",
+                "team": "Deal Configuration",
+                "role": "SAPUI5 Frontend Developer",
+                "hat": "sapui5",
+                "start": "2021-11",
+                "end": "2023-10",
+                "current": false,
+                "summary": "Frontend-focused delivery on the ECS Private Cloud Deal Configuration platform: customer-facing and internal configuration apps, with SAPUI5 micro-frontends composed via the Luigi framework.",
+                "achievements": [
+                  "Built modular SAPUI5 applications integrated via Luigi to compose micro frontend–based user interfaces.",
+                  "Delivered customer-facing and internal Deal Configuration screens used by ECS account teams.",
+                  "Owned in-app user-help and embedded guidance integration across the platform."
+                ],
+                "technologies": [
+                  "SAPUI5",
+                  "TypeScript",
+                  "Luigi",
+                  "OData v2",
+                  "SAP Fiori",
+                  "GitHub Enterprise",
+                  "Jira"
+                ]
+              },
+              {
+                "id": "sap-btp-fullstack",
+                "team": "Platform Services",
+                "role": "SAP Full-Stack Developer (CAP / SAP BTP)",
+                "hat": "fullstack",
+                "start": "2023-11",
+                "end": "2026-02",
+                "current": false,
+                "summary": "Full-stack delivery on SAP BTP within the same department. CAP backend services in TypeScript including custom cds plugins, alongside SAPUI5 admin UIs for Redis-backed feature/configuration data and the internal feature-flag operations service.",
+                "achievements": [
+                  "Designed and shipped the internal feature-flag operations service together with its SAPUI5 admin dashboard.",
+                  "Implemented backend services with SAP CAP + TypeScript, including custom cds plugins to standardize shared functionality across services.",
+                  "Operated BTP service configuration and bindings: Redis, hyperscaler-managed services, notifications, user assistance, observability."
+                ],
+                "technologies": [
+                  "SAP CAP",
+                  "SAP BTP",
+                  "TypeScript",
+                  "Effect Framework",
+                  "Node.js",
+                  "SAPUI5",
+                  "Redis",
+                  "GitHub Enterprise",
+                  "Jira"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "clearstream",
+            "client": "Deutsche Börse / Clearstream",
+            "department": "Custom Fiori for Banking Operations",
+            "city": "Luxembourg, LU",
+            "clientLogoIcon": "sap-icon://building",
+            "start": "2021-03",
+            "end": "2021-09",
+            "current": false,
+            "phases": [
+              {
+                "id": "clearstream-ui5",
+                "team": "Custom UI5 & Reusable Libraries",
+                "role": "SAP UI5 Developer",
+                "hat": "sapui5",
+                "start": "2021-03",
+                "end": "2021-09",
+                "current": false,
+                "summary": "Custom SAPUI5 development for customer needs at Clearstream, including reusable UI5 components and maintenance of previously developed custom libraries. Agile delivery with Jira as the primary project tool.",
+                "achievements": [
+                  "Delivered custom SAPUI5 features for Clearstream banking operations.",
+                  "Authored and maintained reusable UI5 components used across multiple projects.",
+                  "Maintained and extended a previously developed custom UI5 library."
+                ],
+                "technologies": [
+                  "SAPUI5",
+                  "OData",
+                  "SAP WebIDE",
+                  "GitHub Enterprise",
+                  "Git",
+                  "Jira"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "accenture",
+        "name": "Accenture",
+        "kind": "consultancy",
+        "country": "Latvia",
+        "countryEmoji": "🇱🇻",
+        "city": "Riga, LV",
+        "start": "2019-01",
+        "end": "2021-03",
+        "current": false,
+        "engagements": [
+          {
+            "id": "sap-se-via-accenture",
+            "client": "SAP SE",
+            "department": "Standard API Development",
+            "city": "Walldorf, DE (Remote)",
+            "clientLogoIcon": "sap-icon://sap-logo-shape",
+            "start": "2020-07",
+            "end": "2021-03",
+            "current": false,
+            "phases": [
+              {
+                "id": "sap-se-accenture-cap",
+                "team": "API Platform",
+                "role": "SAP CAP & UI5 Developer",
+                "hat": "fullstack",
+                "start": "2020-07",
+                "end": "2021-03",
+                "current": false,
+                "summary": "Standard API development for SAP SE using SAP CAP with OData v4 (REST also supported). Built UIs with Fiori Elements annotations and extended them with custom UI where needed. Supported CI/CD on Jenkins and SAP CP CloudFoundry deployments.",
+                "achievements": [
+                  "Developed standard APIs on the SAP CAP framework with OData v4 and REST support.",
+                  "Built and extended Fiori Elements–driven UIs, adding custom UI where annotations were not enough.",
+                  "Supported CI/CD configuration on Jenkins and SonarQube, with deployments to SAP CP CloudFoundry."
+                ],
+                "technologies": [
+                  "SAP CAP",
+                  "OData v4",
+                  "REST",
+                  "SAPUI5",
+                  "Fiori Elements",
+                  "Node.js",
+                  "VSCode",
+                  "Jenkins",
+                  "SonarQube",
+                  "CloudFoundry",
+                  "SAPCP",
+                  "cfCLI",
+                  "OPA5",
+                  "Karma"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "suek-ag",
+            "client": "SUEK AG",
+            "department": "Custom UI5 / Live Fiori Support",
+            "city": "Switzerland (Remote)",
+            "clientLogoIcon": "sap-icon://building",
+            "start": "2019-10",
+            "end": "2020-06",
+            "current": false,
+            "phases": [
+              {
+                "id": "suek-engagement",
+                "team": "Custom UI5 & Support",
+                "role": "SAP UI5 Developer",
+                "hat": "sapui5",
+                "start": "2019-10",
+                "end": "2020-06",
+                "current": false,
+                "summary": "Side engagement at SUEK AG alongside the main SAP SE programme. Custom SAPUI5 development, standard application extensions, and live Fiori app troubleshooting support.",
+                "achievements": [
+                  "Delivered custom SAPUI5 features and extensions for standard SAP applications at SUEK.",
+                  "Provided live troubleshooting support for production Fiori applications."
+                ],
+                "technologies": ["SAP WebIDE", "SAPUI5", "Git"]
+              }
+            ]
+          },
+          {
+            "id": "thyssenkrupp",
+            "client": "thyssenkrupp",
+            "department": "S/4HANA Extensions & Agentry SME",
+            "city": "Düsseldorf, DE",
+            "clientLogoIcon": "sap-icon://building",
+            "start": "2019-01",
+            "end": "2019-09",
+            "current": false,
+            "phases": [
+              {
+                "id": "thyssenkrupp-agentry-ui5",
+                "team": "SAP Work Manager / Agentry",
+                "role": "SAP Agentry & UI5 Developer",
+                "hat": "sapui5",
+                "additionalHats": ["mobile"],
+                "start": "2019-01",
+                "end": "2019-09",
+                "current": false,
+                "summary": "Side engagement at thyssenkrupp: custom UI5 development and standard app extensions, plus SME role on Agentry development reviewing custom SAP Work Manager parts. Live Fiori application troubleshooting support.",
+                "achievements": [
+                  "Reviewed and supported the custom parts of SAP Work Manager (Agentry) as subject-matter expert.",
+                  "Extended standard SAP UI5 / Fiori applications for thyssenkrupp business processes.",
+                  "Provided live support for production Fiori applications."
+                ],
+                "technologies": [
+                  "SAP Work Manager",
+                  "Agentry Framework",
+                  "SAP NetWeaver Dev. Studio",
+                  "SAP WebIDE",
+                  "SAPUI5",
+                  "Git"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "varucon",
+        "name": "Varucon Technology",
+        "kind": "consultancy",
+        "country": "Turkey",
+        "countryEmoji": "🇹🇷",
+        "city": "Istanbul, TR",
+        "start": "2018-01",
+        "end": "2019-01",
+        "current": false,
+        "engagements": [
+          {
+            "id": "varucon-kalyon",
+            "client": "Kalyon İnşaat",
+            "department": "Construction · Custom Fiori",
+            "city": "Istanbul, TR",
+            "clientLogoIcon": "sap-icon://building",
+            "start": "2018-01",
+            "end": "2019-01",
+            "current": false,
+            "parallel": true,
+            "phases": [
+              {
+                "id": "varucon-kalyon-ui5",
+                "team": "Custom UI5",
+                "role": "SAP UI5 Developer",
+                "hat": "sapui5",
+                "start": "2018-01",
+                "end": "2019-01",
+                "current": false,
+                "summary": "Parallel client engagement at Varucon: custom SAPUI5 development for Kalyon İnşaat. Workforce split across multiple Istanbul clients within the same week.",
+                "achievements": [
+                  "Delivered custom SAPUI5 features for Kalyon İnşaat business processes."
+                ],
+                "technologies": ["SAPUI5", "OData", "Git"]
+              }
+            ]
+          },
+          {
+            "id": "varucon-zen-diamond",
+            "client": "Zen Diamond",
+            "department": "Retail / Jewellery · Custom Fiori",
+            "city": "Istanbul, TR",
+            "clientLogoIcon": "sap-icon://building",
+            "start": "2018-01",
+            "end": "2019-01",
+            "current": false,
+            "parallel": true,
+            "phases": [
+              {
+                "id": "varucon-zen-ui5",
+                "team": "Custom UI5",
+                "role": "SAP UI5 Developer",
+                "hat": "sapui5",
+                "start": "2018-01",
+                "end": "2019-01",
+                "current": false,
+                "summary": "Parallel client engagement at Varucon: custom SAPUI5 development for Zen Diamond.",
+                "achievements": [
+                  "Delivered custom SAPUI5 features for Zen Diamond business processes."
+                ],
+                "technologies": ["SAPUI5", "OData", "Git"]
+              }
+            ]
+          },
+          {
+            "id": "varucon-dogtas",
+            "client": "Doğtaş Mobilya",
+            "department": "Furniture / Retail · Custom Fiori",
+            "city": "Istanbul, TR",
+            "clientLogoIcon": "sap-icon://building",
+            "start": "2018-01",
+            "end": "2019-01",
+            "current": false,
+            "parallel": true,
+            "phases": [
+              {
+                "id": "varucon-dogtas-ui5",
+                "team": "Custom UI5",
+                "role": "SAP UI5 Developer",
+                "hat": "sapui5",
+                "start": "2018-01",
+                "end": "2019-01",
+                "current": false,
+                "summary": "Parallel client engagement at Varucon: custom SAPUI5 development for Doğtaş Mobilya.",
+                "achievements": [
+                  "Delivered custom SAPUI5 features for Doğtaş Mobilya business processes."
+                ],
+                "technologies": ["SAPUI5", "OData", "Git"]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "vektora",
+        "name": "Vektora Bilişim A.Ş.",
+        "kind": "consultancy",
+        "country": "Turkey",
+        "countryEmoji": "🇹🇷",
+        "city": "Istanbul, TR",
+        "start": "2013-09",
+        "end": "2018-01",
+        "current": false,
+        "engagements": [
+          {
+            "id": "vektora-tubitak",
+            "client": "TÜBİTAK",
+            "department": "Public Research Council · UI5",
+            "city": "Ankara, TR",
+            "clientLogoIcon": "sap-icon://building",
+            "start": "2014-06",
+            "end": "2018-01",
+            "current": false,
+            "parallel": true,
+            "phases": [
+              {
+                "id": "vektora-tubitak-ui5",
+                "team": "Custom UI5",
+                "role": "SAP UI5 Developer",
+                "hat": "sapui5",
+                "start": "2014-06",
+                "end": "2018-01",
+                "current": false,
+                "summary": "Parallel client engagement at Vektora: SAPUI5 development for TÜBİTAK.",
+                "achievements": ["Delivered custom SAPUI5 features for TÜBİTAK processes."],
+                "technologies": ["SAPUI5", "OData", "Git"]
+              }
+            ]
+          },
+          {
+            "id": "vektora-turk-telekom",
+            "client": "Türk Telekom",
+            "department": "Telecom · UI5",
+            "city": "Istanbul, TR",
+            "clientLogoIcon": "sap-icon://building",
+            "start": "2014-06",
+            "end": "2018-01",
+            "current": false,
+            "parallel": true,
+            "phases": [
+              {
+                "id": "vektora-turk-telekom-ui5",
+                "team": "Custom UI5",
+                "role": "SAP UI5 Developer",
+                "hat": "sapui5",
+                "start": "2014-06",
+                "end": "2018-01",
+                "current": false,
+                "summary": "Parallel client engagement at Vektora: SAPUI5 development for Türk Telekom.",
+                "achievements": ["Delivered custom SAPUI5 features for Türk Telekom processes."],
+                "technologies": ["SAPUI5", "OData", "Git"]
+              }
+            ]
+          },
+          {
+            "id": "vektora-ors",
+            "client": "ORS Bearing",
+            "department": "Manufacturing · UI5",
+            "city": "Ankara, TR",
+            "clientLogoIcon": "sap-icon://building",
+            "start": "2014-06",
+            "end": "2018-01",
+            "current": false,
+            "parallel": true,
+            "phases": [
+              {
+                "id": "vektora-ors-ui5",
+                "team": "Custom UI5",
+                "role": "SAP UI5 Developer",
+                "hat": "sapui5",
+                "start": "2014-06",
+                "end": "2018-01",
+                "current": false,
+                "summary": "Parallel client engagement at Vektora: SAPUI5 development for ORS Bearing.",
+                "achievements": ["Delivered custom SAPUI5 features for ORS Bearing processes."],
+                "technologies": ["SAPUI5", "OData", "Git"]
+              }
+            ]
+          },
+          {
+            "id": "vektora-koctas",
+            "client": "Koçtaş",
+            "department": "Retail · UI5",
+            "city": "Istanbul, TR",
+            "clientLogoIcon": "sap-icon://building",
+            "start": "2014-06",
+            "end": "2018-01",
+            "current": false,
+            "parallel": true,
+            "phases": [
+              {
+                "id": "vektora-koctas-ui5",
+                "team": "Custom UI5",
+                "role": "SAP UI5 Developer",
+                "hat": "sapui5",
+                "start": "2014-06",
+                "end": "2018-01",
+                "current": false,
+                "summary": "Parallel client engagement at Vektora: SAPUI5 development for Koçtaş.",
+                "achievements": ["Delivered custom SAPUI5 features for Koçtaş processes."],
+                "technologies": ["SAPUI5", "OData", "Git"]
+              }
+            ]
+          },
+          {
+            "id": "vektora-hmf",
+            "client": "HMF",
+            "department": "Field Service · Agentry Mobile",
+            "city": "Istanbul, TR",
+            "clientLogoIcon": "sap-icon://iphone",
+            "start": "2013-09",
+            "end": "2014-03",
+            "current": false,
+            "parallel": true,
+            "phases": [
+              {
+                "id": "vektora-hmf-agentry",
+                "team": "SAP Agentry Mobile",
+                "role": "SAP Agentry Developer",
+                "hat": "mobile",
+                "start": "2013-09",
+                "end": "2014-03",
+                "current": false,
+                "summary": "Parallel client engagement at Vektora: SAP Agentry mobile development for HMF.",
+                "achievements": ["Delivered SAP Agentry mobile flows for HMF field operations."],
+                "technologies": ["SAP Agentry", "SAP Work Manager", "SAP NetWeaver Dev. Studio"]
+              }
+            ]
+          },
+          {
+            "id": "vektora-vestel",
+            "client": "Vestel",
+            "department": "Manufacturing · Agentry Mobile",
+            "city": "Manisa, TR",
+            "clientLogoIcon": "sap-icon://iphone",
+            "start": "2013-09",
+            "end": "2014-03",
+            "current": false,
+            "parallel": true,
+            "phases": [
+              {
+                "id": "vektora-vestel-agentry",
+                "team": "SAP Agentry Mobile",
+                "role": "SAP Agentry Developer",
+                "hat": "mobile",
+                "start": "2013-09",
+                "end": "2014-03",
+                "current": false,
+                "summary": "Parallel client engagement at Vektora: SAP Agentry mobile development for Vestel.",
+                "achievements": [
+                  "Delivered SAP Agentry mobile flows for Vestel manufacturing operations."
+                ],
+                "technologies": ["SAP Agentry", "SAP Work Manager", "SAP NetWeaver Dev. Studio"]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "education": [
+    {
+      "institution": "Kadir Has University",
+      "degree": "B.Sc.",
+      "field": "Information Technologies",
+      "start": "2008-09",
+      "end": "2013-06",
+      "city": "Istanbul, TR",
+      "url": "https://www.khas.edu.tr/en/",
+      "logoSrc": "assets/khasedutr_logo.jpeg"
+    }
+  ],
+  "certifications": [
+    {
+      "id": "c-cp-11",
+      "name": "SAP Cloud Platform",
+      "issuer": "SAP",
+      "issued": "2020-06",
+      "verifyUrl": "https://www.credly.com/badges/a4dff6cc-32ea-4e58-9c17-2ed6cfc2f8e6"
+    },
+    {
+      "id": "c-fiordev-20",
+      "name": "SAP Fiori Application Developer",
+      "issuer": "SAP",
+      "issued": "2020-05",
+      "verifyUrl": "https://www.credly.com/badges/a1935c28-4a85-4d10-97ed-ed8216466cb2"
+    },
+    {
+      "id": "c-fioradm-21",
+      "name": "SAP Fiori System Administration",
+      "issuer": "SAP",
+      "issued": "2020-08",
+      "verifyUrl": "https://www.credly.com/badges/864d8080-47a3-4677-8186-68da2bd7407f"
+    }
+  ],
+  "languages": [
+    {
+      "name": "Turkish",
+      "level": "Native"
+    },
+    {
+      "name": "English",
+      "level": "Full Professional Proficiency"
+    },
+    {
+      "name": "Luxembourgish",
+      "level": "Beginner"
+    }
+  ],
+  "contact": {
+    "channels": [
+      {
+        "type": "email",
+        "label": "Email",
+        "value": "aydogdu.murat90@gmail.com",
+        "href": "mailto:aydogdu.murat90@gmail.com",
+        "icon": "sap-icon://email",
+        "primary": true
+      },
+      {
+        "type": "phone",
+        "label": "Phone",
+        "value": "+352 691 373 199",
+        "href": "tel:+352691373199",
+        "icon": "sap-icon://phone"
+      },
+      {
+        "type": "teams",
+        "label": "Microsoft Teams",
+        "value": "aydogdu.murat90@gmail.com",
+        "href": "https://teams.microsoft.com/l/chat/0/0?users=murat.aydogdu@4dev.dev",
+        "icon": "sap-icon://discussion"
+      },
+      {
+        "type": "linkedin",
+        "label": "LinkedIn",
+        "value": "aydogdumurat",
+        "href": "https://www.linkedin.com/in/aydogdumurat/",
+        "icon": "sap-icon://lead"
+      },
+      {
+        "type": "github",
+        "label": "GitHub",
+        "value": "bymurat",
+        "href": "https://github.com/bymurat",
+        "icon": "sap-icon://source-code"
+      }
+    ]
+  },
+  "seo": {
+    "title": "Murat AYDOĞDU — SAP Technical Consultant (UI5 / Fiori / CAP)",
+    "description": "Interactive resume of Murat AYDOĞDU, SAP Technical Consultant with 10+ years across SAPUI5, SAP Fiori, SAP CAP and SAP BTP. Based in Luxembourg.",
+    "canonicalUrl": "https://bymurat.github.io/ui5-interactive-resume/"
+  }
+}

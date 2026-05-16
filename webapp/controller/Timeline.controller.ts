@@ -1,17 +1,14 @@
 import BaseController from "./BaseController";
-import ListItemBase from "sap/m/ListItemBase";
-import { URLHelper } from "sap/m/library";
 import JSONModel from "sap/ui/model/json/JSONModel";
 import Fragment from "sap/ui/core/Fragment";
 import type Popover from "sap/m/Popover";
 import type Event from "sap/ui/base/Event";
 import type ResumeGantt from "../control/ResumeGantt";
-import type { ContactChannel } from "../types/resume";
 
 /**
  * @namespace ui5.interactive.resume.controller
  */
-export default class Resume extends BaseController {
+export default class Timeline extends BaseController {
 
 	private popover?: Popover;
 	private detailModel = new JSONModel({});
@@ -20,37 +17,9 @@ export default class Resume extends BaseController {
 		this.getView().setModel(this.detailModel, "phaseDetail");
 	}
 
-	public onContactPress(): void {
-		const email = this.getPrimaryEmail();
-		if (email) {
-			URLHelper.redirect(email.href, false);
-		}
-	}
-
-	public onDownloadPdfPress(): void {
-		window.print();
-	}
-
-	public onOpenTimelinePress(): void {
-		this.getRouter().navTo("timeline");
-	}
-
-	public onContactChannelPress(event: { getSource(): ListItemBase }): void {
-		const item = event.getSource();
-		const ctx = item.getBindingContext("resume");
-		if (!ctx) {
-			return;
-		}
-		const channel = ctx.getObject() as ContactChannel;
-		if (channel?.href) {
-			const newWindow = channel.type !== "email" && channel.type !== "phone";
-			URLHelper.redirect(channel.href, newWindow);
-		}
-	}
-
 	public async onPhasePress(event: Event): Promise<void> {
 		const params = event.getParameters() as { phaseId: string; engagementId: string; employerId: string; domRef: HTMLElement };
-		const gantt = this.byId("resumeGanttInline") as ResumeGantt;
+		const gantt = this.byId("resumeGantt") as ResumeGantt;
 		const found = gantt?.findPhase(params.phaseId);
 		if (!found) {
 			return;
@@ -86,14 +55,5 @@ export default class Resume extends BaseController {
 
 	public onClosePopover(): void {
 		this.popover?.close();
-	}
-
-	private getPrimaryEmail(): ContactChannel | undefined {
-		const resumeModel = this.getOwnerComponent().getModel("resume") as JSONModel;
-		const channels = resumeModel.getProperty("/contact/channels") as ContactChannel[] | undefined;
-		if (!channels) {
-			return undefined;
-		}
-		return channels.find(c => c.type === "email" && c.primary) ?? channels.find(c => c.type === "email");
 	}
 }

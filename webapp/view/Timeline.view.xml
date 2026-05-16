@@ -1,0 +1,82 @@
+<mvc:View
+	controllerName="ui5.interactive.resume.controller.Timeline"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:rgc="ui5.interactive.resume.control">
+
+	<Page
+		id="timelinePage"
+		title="{i18n>sectionTimeline}"
+		showNavButton="true"
+		navButtonPress=".onNavBack">
+
+		<content>
+			<Panel
+				class="sapUiResponsiveMargin"
+				width="auto"
+				backgroundDesign="Solid">
+				<headerToolbar>
+					<Toolbar>
+						<Title
+							text="{resume>/profile/firstName} {resume>/profile/lastName} — Career Timeline"
+							level="H2" />
+						<ToolbarSpacer />
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<rgc:ResumeGantt
+						id="resumeGantt"
+						rowHeight="48"
+						class="sapUiContentPadding"
+						employers="{resume>/timeline/employers}"
+						phasePress=".onPhasePress">
+						<rgc:employers>
+							<rgc:ResumeGanttEmployer
+								employerId="{resume>id}"
+								name="{resume>name}"
+								kind="{resume>kind}"
+								country="{resume>country}"
+								countryEmoji="{resume>countryEmoji}"
+								city="{resume>city}"
+								start="{resume>start}"
+								end="{resume>end}"
+								current="{resume>current}"
+								engagements="{resume>engagements}">
+								<rgc:engagements>
+									<rgc:ResumeGanttEngagement
+										engagementId="{resume>id}"
+										client="{resume>client}"
+										department="{resume>department}"
+										city="{resume>city}"
+										clientLogoIcon="{resume>clientLogoIcon}"
+										start="{resume>start}"
+										end="{resume>end}"
+										current="{resume>current}"
+										parallel="{resume>parallel}"
+										phases="{resume>phases}">
+										<rgc:phases>
+											<rgc:ResumeGanttPhase
+												phaseId="{resume>id}"
+												team="{resume>team}"
+												role="{resume>role}"
+												hat="{resume>hat}"
+												additionalHats="{resume>additionalHats}"
+												start="{resume>start}"
+												end="{resume>end}"
+												current="{resume>current}"
+												summary="{resume>summary}"
+												achievements="{resume>achievements}"
+												technologies="{resume>technologies}" />
+										</rgc:phases>
+									</rgc:ResumeGanttEngagement>
+								</rgc:engagements>
+							</rgc:ResumeGanttEmployer>
+						</rgc:employers>
+					</rgc:ResumeGantt>
+				</content>
+			</Panel>
+		</content>
+	</Page>
+
+</mvc:View>

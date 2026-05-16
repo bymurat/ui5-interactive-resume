@@ -41,8 +41,7 @@
         "sap.f": {},
         "sap.uxap": {},
         "sap.ui.layout": {},
-        "sap.ui.unified": {},
-        "themelib_sap_horizon": {}
+        "sap.ui.unified": {}
       }
     },
 
@@ -51,6 +50,12 @@
     "contentDensities": {
       "compact": true,
       "cozy": true
+    },
+
+    "resources": {
+      "css": [
+        { "uri": "control/ResumeGantt.css" }
+      ]
     },
 
     "models": {
@@ -79,12 +84,21 @@
           "pattern": "",
           "name": "resume",
           "target": "resume"
+        },
+        {
+          "pattern": "timeline",
+          "name": "timeline",
+          "target": "timeline"
         }
       ],
       "targets": {
         "resume": {
           "id": "resume",
           "name": "Resume"
+        },
+        "timeline": {
+          "id": "timeline",
+          "name": "Timeline"
         }
       }
     }
