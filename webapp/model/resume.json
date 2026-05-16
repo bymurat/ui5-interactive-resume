@@ -685,7 +685,7 @@
       {
         "type": "teams",
         "label": "Microsoft Teams",
-        "value": "aydogdu.murat90@gmail.com",
+        "value": "murat.aydogdu@4dev.dev",
         "href": "https://teams.microsoft.com/l/chat/0/0?users=murat.aydogdu@4dev.dev",
         "icon": "sap-icon://discussion"
       },
@@ -694,7 +694,7 @@
         "label": "LinkedIn",
         "value": "aydogdumurat",
         "href": "https://www.linkedin.com/in/aydogdumurat/",
-        "icon": "sap-icon://lead"
+        "icon": "sap-icon://employee"
       },
       {
         "type": "github",

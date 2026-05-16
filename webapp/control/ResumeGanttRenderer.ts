@@ -194,7 +194,7 @@ function renderEmployerCard(
   );
 
   rm.openStart("span").class("rgEmployerHeader__meta").openEnd();
-  rm.text(` · ${employer.getProperty("city") as string} · ${range} · ${duration}`);
+  rm.text(`${employer.getProperty("city") as string} · ${range} · ${duration}`);
   rm.close("span");
 
   rm.close("div");
