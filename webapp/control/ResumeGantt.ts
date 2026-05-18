@@ -1,7 +1,26 @@
+import type Event from "sap/ui/base/Event";
 import Control from "sap/ui/core/Control";
 import type ResumeGanttEmployer from "./ResumeGanttEmployer";
 import type ResumeGanttPhase from "./ResumeGanttPhase";
 import ResumeGanttRenderer from "./ResumeGanttRenderer";
+
+/**
+ * Parameters of the ResumeGantt#phasePress event.
+ */
+export interface ResumeGantt$PhasePressEventParameters {
+  phaseId?: string;
+  engagementId?: string;
+  employerId?: string;
+  domRef?: HTMLElement;
+}
+
+/**
+ * Event object of the ResumeGantt#phasePress event.
+ */
+export type ResumeGantt$PhasePressEvent = Event<
+  ResumeGantt$PhasePressEventParameters,
+  ResumeGantt
+>;
 
 /**
  * Custom control that renders a multi-employer career timeline as a Gantt.
@@ -52,12 +71,9 @@ export default class ResumeGantt extends Control {
   public getEndMonth!: () => string | null;
   public getRowHeight!: () => number;
   public getShowLegend!: () => boolean;
-  public firePhasePress!: (params: {
-    phaseId: string;
-    engagementId: string;
-    employerId: string;
-    domRef: HTMLElement;
-  }) => this;
+  public firePhasePress!: (
+    params: ResumeGantt$PhasePressEventParameters
+  ) => this;
 
   public onclick(oEvent: MouseEvent): void {
     this.handleActivation(oEvent.target as HTMLElement);

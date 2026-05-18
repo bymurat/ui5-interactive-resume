@@ -1,15 +1,17 @@
-import BaseController from "./BaseController";
-import JSONModel from "sap/ui/model/json/JSONModel";
-import Fragment from "sap/ui/core/Fragment";
 import type Popover from "sap/m/Popover";
-import type Event from "sap/ui/base/Event";
+import Fragment from "sap/ui/core/Fragment";
+import JSONModel from "sap/ui/model/json/JSONModel";
 import type ResumeGantt from "../control/ResumeGantt";
+import type {
+	ResumeGantt$PhasePressEvent,
+	ResumeGantt$PhasePressEventParameters,
+} from "../control/ResumeGantt";
+import BaseController from "./BaseController";
 
 /**
  * @namespace ui5.interactive.resume.controller
  */
 export default class Timeline extends BaseController {
-
 	private popover?: Popover;
 	private detailModel = new JSONModel({});
 
@@ -17,10 +19,13 @@ export default class Timeline extends BaseController {
 		this.getView().setModel(this.detailModel, "phaseDetail");
 	}
 
-	public async onPhasePress(event: Event): Promise<void> {
-		const params = event.getParameters() as { phaseId: string; engagementId: string; employerId: string; domRef: HTMLElement };
+	public async onPhasePress(
+		oEvent: ResumeGantt$PhasePressEvent,
+	): Promise<void> {
+		const oParameters =
+			oEvent.getParameters() as ResumeGantt$PhasePressEventParameters;
 		const gantt = this.byId("resumeGantt") as ResumeGantt;
-		const found = gantt?.findPhase(params.phaseId);
+		const found = gantt?.findPhase(oParameters.phaseId);
 		if (!found) {
 			return;
 		}
@@ -38,19 +43,19 @@ export default class Timeline extends BaseController {
 			current: phase.getProperty("current"),
 			summary: phase.getProperty("summary"),
 			achievements: phase.getProperty("achievements") ?? [],
-			technologies: phase.getProperty("technologies") ?? []
+			technologies: phase.getProperty("technologies") ?? [],
 		});
 
 		if (!this.popover) {
-			this.popover = await Fragment.load({
+			this.popover = (await Fragment.load({
 				id: this.getView().getId(),
 				name: "ui5.interactive.resume.fragment.ProjectPopover",
-				controller: this
-			}) as Popover;
+				controller: this,
+			})) as Popover;
 			this.getView().addDependent(this.popover);
 		}
 
-		this.popover.openBy(params.domRef);
+		this.popover.openBy(oParameters.domRef);
 	}
 
 	public onClosePopover(): void {
