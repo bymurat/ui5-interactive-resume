@@ -10,6 +10,7 @@
     "avatarSrc": "assets/profile-photo.jpeg"
   },
   "summary": "I started working with SAP technologies in 2013 in Istanbul and have grown from a SAPUI5- and SAP Agentry-focused mobility consultant into a full-stack SAP cloud application developer. Over the last seven years — at Accenture in Riga and then at 4Dev in Luxembourg — I have deepened my expertise in SAP CAP, SAP BTP, TypeScript, Fiori Elements, and metadata-driven UIs while contributing to SAP SE and Clearstream programmes. My day-to-day work spans frontend, backend, and platform integration on SAP BTP, with strong Git, Jira, and GitHub Actions CI/CD practice in Agile teams.",
+  "summaryInterests": "Lately I have been bringing AI and large language models into my day-to-day SAP engineering. While building SAP CAP services and SAPUI5 apps, I lean on Anthropic's <a href=\"https://www.anthropic.com/news/skills\" target=\"_blank\">Agent Skills</a> and the Model Context Protocol (MCP) as effective coding assistants — especially for authoring SAP Fiori elements annotations, both at the CAP service-definition layer and during metadata-driven UI generation. Alongside this, I run proof-of-concept work with SAP Business AI on BTP — experimenting with the Generative AI Hub in SAP AI Core, customizing Joule for business processes through Joule Studio, and investigating how custom and open-source models can run as deployments in SAP AI Core alongside SAP's hosted foundation models.",
   "skills": [
     {
       "id": "frontend",

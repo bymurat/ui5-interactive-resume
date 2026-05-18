@@ -98,6 +98,9 @@
 											text="{i18n>overviewTitle}"
 											level="H3" />
 										<Text text="{resume>/summary}" />
+										<FormattedText
+											htmlText="{resume>/summaryInterests}"
+											class="sapUiSmallMarginTop" />
 									</VBox>
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>
