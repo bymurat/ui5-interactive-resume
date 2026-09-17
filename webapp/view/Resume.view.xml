@@ -56,10 +56,6 @@
 								type="Emphasized"
 								icon="sap-icon://email"
 								press=".onContactPress" />
-							<Button
-								text="{i18n>downloadPdf}"
-								icon="sap-icon://pdf-attachment"
-								press=".onDownloadPdfPress" />
 						</uxap:actions>
 					</uxap:ObjectPageDynamicHeaderTitle>
 				</uxap:headerTitle>

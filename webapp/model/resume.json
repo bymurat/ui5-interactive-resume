@@ -9,7 +9,7 @@
     "avatarInitials": "MA",
     "avatarSrc": "assets/profile-photo.jpeg"
   },
-  "summary": "I started working with SAP technologies in 2013 in Istanbul and have grown from a SAPUI5- and SAP Agentry-focused mobility consultant into a full-stack SAP cloud application developer. Over the last seven years — at Accenture in Riga and then at 4Dev in Luxembourg — I have deepened my expertise in SAP CAP, SAP BTP, TypeScript, Fiori Elements, and metadata-driven UIs while contributing to SAP SE and Clearstream programmes. My day-to-day work spans frontend, backend, and platform integration on SAP BTP, with strong Git, Jira, and GitHub Actions CI/CD practice in Agile teams.",
+  "summary": "I started working with SAP technologies in 2013 in Istanbul and have grown from a SAPUI5- and SAP Agentry-focused mobility consultant into a full-stack SAP cloud application developer. Over the last seven years — at Accenture in Riga and then at 4Dev in Luxembourg — I have deepened my expertise in SAP CAP, SAP BTP, TypeScript, Fiori Elements, and metadata-driven UIs while contributing to SAP SE and Clearstream programmes. My day-to-day work spans frontend, backend, and platform integration on SAP BTP, with strong Git, Jira, and GitHub Actions CI/CD practice in Agile teams. More recently, I've been applying agentic app development to discover ABAP RESTful programming with Eclipse ADT, alongside ABAP Workbench development on ECC systems.",
   "summaryInterests": "Lately I have been bringing AI and large language models into my day-to-day SAP engineering. While building SAP CAP services and SAPUI5 apps, I lean on Anthropic's <a href=\"https://www.anthropic.com/news/skills\" target=\"_blank\">Agent Skills</a> and the Model Context Protocol (MCP) as effective coding assistants — especially for authoring SAP Fiori elements annotations, both at the CAP service-definition layer and during metadata-driven UI generation. Alongside this, I run proof-of-concept work with SAP Business AI on BTP — experimenting with the Generative AI Hub in SAP AI Core, customizing Joule for business processes through Joule Studio, and investigating how custom and open-source models can run as deployments in SAP AI Core alongside SAP's hosted foundation models.",
   "skills": [
     {
@@ -128,6 +128,50 @@
   "timeline": {
     "employers": [
       {
+        "id": "sopra-steria",
+        "name": "Sopra Steria",
+        "kind": "consultancy",
+        "country": "Luxembourg",
+        "countryEmoji": "🇱🇺",
+        "city": "Luxembourg, LU",
+        "start": "2026-08",
+        "end": null,
+        "current": true,
+        "engagements": [
+          {
+            "id": "creos-via-sopra-steria",
+            "client": "Creos LU S.A.",
+            "department": "Full-Stack & Integration",
+            "city": "Luxembourg, LU",
+            "clientLogoIcon": "sap-icon://building",
+            "start": "2026-09",
+            "end": null,
+            "current": true,
+            "phases": [
+              {
+                "id": "creos-fullstack",
+                "team": "Full-Stack & Integration",
+                "role": "SAP Full-Stack & Integration Developer",
+                "hat": "fullstack",
+                "start": "2026-09",
+                "end": null,
+                "current": true,
+                "summary": "Newly joined onsite engagement with Creos LU S.A. via Sopra Steria, focused on full-stack development and integration work on the SAP landscape.",
+                "achievements": [
+                  "Onboarded onto the Creos LU S.A. SAP landscape to deliver full-stack development and integration work."
+                ],
+                "technologies": [
+                  "SAP CAP",
+                  "SAPUI5",
+                  "OData",
+                  "TypeScript"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "4dev",
         "name": "4Dev SARL",
         "kind": "consultancy",
@@ -135,8 +179,8 @@
         "countryEmoji": "🇱🇺",
         "city": "Luxembourg, LU",
         "start": "2021-03",
-        "end": null,
-        "current": true,
+        "end": "2026-07",
+        "current": false,
         "engagements": [
           {
             "id": "sap-se-via-4dev",
@@ -686,8 +730,8 @@
       {
         "type": "teams",
         "label": "Microsoft Teams",
-        "value": "murat.aydogdu@4dev.dev",
-        "href": "https://teams.microsoft.com/l/chat/0/0?users=murat.aydogdu@4dev.dev",
+        "value": "aydogdu.murat90@gmail.com",
+        "href": "https://teams.microsoft.com/l/chat/0/0?users=aydogdu.murat90@gmail.com",
         "icon": "sap-icon://discussion"
       },
       {

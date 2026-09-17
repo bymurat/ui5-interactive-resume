@@ -1,6 +1,5 @@
 import type { ListItemBase$PressEvent } from "sap/m/ListItemBase";
 import { URLHelper } from "sap/m/library";
-import PDFViewer from "sap/m/PDFViewer";
 import type Popover from "sap/m/Popover";
 import Fragment from "sap/ui/core/Fragment";
 import JSONModel from "sap/ui/model/json/JSONModel";
@@ -14,7 +13,6 @@ import BaseController from "./BaseController";
  */
 export default class Resume extends BaseController {
 	private popover?: Popover;
-	private pdfViewer?: PDFViewer;
 	private detailModel = new JSONModel({});
 
 	public onInit(): void {
@@ -26,21 +24,6 @@ export default class Resume extends BaseController {
 		if (email) {
 			URLHelper.redirect(email.href, false);
 		}
-	}
-
-	public onDownloadPdfPress(): void {
-		const source = sap.ui.require.toUrl(
-			"ui5/interactive/resume/assets/Murat-Aydogdu-CV.pdf",
-		);
-		if (!this.pdfViewer) {
-			this.pdfViewer = new PDFViewer({
-				source,
-				title: "Murat AYDOĞDU — CV",
-				showDownloadButton: true,
-			});
-			this.getView().addDependent(this.pdfViewer);
-		}
-		this.pdfViewer.open();
 	}
 
 	public onOpenTimelinePress(): void {
