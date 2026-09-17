@@ -23,6 +23,24 @@ export type ResumeGantt$PhasePressEvent = Event<
 >;
 
 /**
+ * Packed i18n texts consumed by ResumeGanttRenderer (see formatter.packGanttTexts).
+ */
+export interface ResumeGanttI18nTexts {
+  ariaLabel: string;
+  emptyState: string;
+  legendParallel: string;
+  hatLabels: { sapui5: string; fullstack: string; mobile: string };
+  present: string;
+  durationYears: string;
+  durationMonths: string;
+  durationYearsMonths: string;
+  ariaOnTeamAt: string;
+  ariaPrimaryRole: string;
+  ariaAlso: string;
+  ariaParallel: string;
+}
+
+/**
  * Custom control that renders a multi-employer career timeline as a Gantt.
  * Each employer becomes a card, every engagement inside it becomes a swimlane,
  * and the colored segments inside a swimlane are role phases whose color is
@@ -42,7 +60,12 @@ export default class ResumeGantt extends Control {
       startMonth: { type: "string" },
       endMonth: { type: "string" },
       rowHeight: { type: "int", defaultValue: 42 },
-      showLegend: { type: "boolean", defaultValue: true }
+      showLegend: { type: "boolean", defaultValue: true },
+      /**
+       * i18n texts needed by the renderer, packed via `formatter.packGanttTexts`
+       * since a custom renderer can't bind multiple `{i18n>...}` parts directly.
+       */
+      i18nTexts: { type: "object" }
     },
     defaultAggregation: "employers",
     aggregations: {
@@ -71,6 +94,7 @@ export default class ResumeGantt extends Control {
   public getEndMonth!: () => string | null;
   public getRowHeight!: () => number;
   public getShowLegend!: () => boolean;
+  public getI18nTexts!: () => ResumeGanttI18nTexts | undefined;
   public firePhasePress!: (
     params: ResumeGantt$PhasePressEventParameters
   ) => this;

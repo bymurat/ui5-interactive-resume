@@ -1,4 +1,6 @@
 import type ResourceBundle from "sap/base/i18n/ResourceBundle";
+import Localization from "sap/base/i18n/Localization";
+import type { Select$ChangeEvent } from "sap/m/Select";
 import Controller from "sap/ui/core/mvc/Controller";
 import History from "sap/ui/core/routing/History";
 import type Router from "sap/ui/core/routing/Router";
@@ -79,5 +81,31 @@ export default abstract class BaseController extends Controller {
 		} else {
 			this.getRouter().navTo("resume", {}, undefined, true);
 		}
+	}
+
+	/**
+	 * The base language subtag of the current UI5 session (e.g. "en", "fr", "de", "lb").
+	 * Used as the `selectedKey` of the language switcher.
+	 */
+	public getCurrentLanguageKey(): string {
+		const language = Localization.getLanguage().toLowerCase();
+		const base = language.split(/[-_]/)[0];
+		return ["fr", "de", "lb"].includes(base) ? base : "en";
+	}
+
+	/**
+	 * Switches the app language: persists the choice in the URL (`sap-language`) and
+	 * reloads, so both the i18n bundle and the (per-locale) resume content model are
+	 * re-resolved consistently from a clean boot - simpler and more robust than an
+	 * in-place hot-swap of two independently-loaded models.
+	 */
+	public onLanguageChange(oEvent: Select$ChangeEvent): void {
+		const key = oEvent.getParameter("selectedItem")?.getKey();
+		if (!key) {
+			return;
+		}
+		const url = new URL(window.location.href);
+		url.searchParams.set("sap-language", key);
+		window.location.href = url.toString();
 	}
 }

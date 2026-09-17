@@ -63,8 +63,8 @@
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
           "bundleName": "ui5.interactive.resume.i18n.i18n",
-          "supportedLocales": [""],
-          "fallbackLocale": "",
+          "supportedLocales": ["", "en", "de", "fr", "lb"],
+          "fallbackLocale": "en",
           "async": true
         }
       }

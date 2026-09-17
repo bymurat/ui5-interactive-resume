@@ -16,7 +16,15 @@
 				<core:Icon
 					src="sap-icon://business-card"
 					class="sapUiTinyMarginEnd" />
-				<Text text="{phaseDetail>/client} · via {phaseDetail>/employer}" />
+				<Text
+					text="{
+						parts: [
+							{ path: 'phaseDetail>/client' },
+							{ path: 'phaseDetail>/employer' },
+							{ path: 'i18n>popoverViaLine' }
+						],
+						formatter: 'formatter.viaLine'
+					}" />
 			</HBox>
 
 			<ObjectStatus
@@ -25,12 +33,28 @@
 
 			<HBox wrap="Wrap" alignItems="Center" class="sapUiTinyMarginBottom">
 				<ObjectStatus
-					text="{ path: 'phaseDetail>/hat', formatter: 'formatter.hatLabel' }"
+					text="{
+						parts: [
+							{ path: 'phaseDetail>/hat' },
+							{ path: 'i18n>hatSapui5' },
+							{ path: 'i18n>hatFullstack' },
+							{ path: 'i18n>hatMobile' }
+						],
+						formatter: 'formatter.hatLabel'
+					}"
 					state="{ path: 'phaseDetail>/hat', formatter: 'formatter.hatState' }"
 					class="sapUiTinyMarginEnd" />
 				<HBox wrap="Wrap" items="{phaseDetail>/additionalHats}">
 					<ObjectStatus
-						text="{ path: 'phaseDetail>', formatter: 'formatter.hatLabel' }"
+						text="{
+							parts: [
+								{ path: 'phaseDetail>' },
+								{ path: 'i18n>hatSapui5' },
+								{ path: 'i18n>hatFullstack' },
+								{ path: 'i18n>hatMobile' }
+							],
+							formatter: 'formatter.hatLabel'
+						}"
 						state="{ path: 'phaseDetail>', formatter: 'formatter.hatState' }"
 						class="sapUiTinyMarginEnd" />
 				</HBox>
@@ -45,7 +69,8 @@
 						parts: [
 							{ path: 'phaseDetail>/start' },
 							{ path: 'phaseDetail>/end' },
-							{ path: 'phaseDetail>/current' }
+							{ path: 'phaseDetail>/current' },
+							{ path: 'i18n>ganttPresent' }
 						],
 						formatter: 'formatter.dateRange'
 					}" />
@@ -57,7 +82,10 @@
 						parts: [
 							{ path: 'phaseDetail>/start' },
 							{ path: 'phaseDetail>/end' },
-							{ path: 'phaseDetail>/current' }
+							{ path: 'phaseDetail>/current' },
+							{ path: 'i18n>ganttDurationYears' },
+							{ path: 'i18n>ganttDurationMonths' },
+							{ path: 'i18n>ganttDurationYearsMonths' }
 						],
 						formatter: 'formatter.durationMonths'
 					}" />
@@ -68,7 +96,7 @@
 				class="sapUiSmallMarginBottom" />
 
 			<Title
-				text="Highlights"
+				text="{i18n>popoverHighlights}"
 				level="H5"
 				class="sapUiTinyMarginBottom" />
 			<List
@@ -86,7 +114,7 @@
 			</List>
 
 			<Title
-				text="Technologies"
+				text="{i18n>popoverTechnologies}"
 				level="H5"
 				class="sapUiTinyMarginBottom" />
 			<HBox wrap="Wrap" items="{phaseDetail>/technologies}">
@@ -100,7 +128,7 @@
 			<OverflowToolbar>
 				<ToolbarSpacer />
 				<Button
-					text="Close"
+					text="{i18n>popoverClose}"
 					press=".onClosePopover" />
 			</OverflowToolbar>
 		</footer>

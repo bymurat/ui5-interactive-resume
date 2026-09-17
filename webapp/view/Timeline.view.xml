@@ -3,7 +3,11 @@
 	displayBlock="true"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:rgc="ui5.interactive.resume.control">
+	xmlns:rgc="ui5.interactive.resume.control"
+	core:require="{
+		formatter: 'ui5/interactive/resume/model/formatter'
+	}"
+	xmlns:core="sap.ui.core">
 
 	<Page
 		id="timelinePage"
@@ -19,9 +23,19 @@
 				<headerToolbar>
 					<Toolbar>
 						<Title
-							text="{resume>/profile/firstName} {resume>/profile/lastName} — Career Timeline"
+							text="{resume>/profile/firstName} {resume>/profile/lastName} {i18n>timelinePageTitleSuffix}"
 							level="H2" />
 						<ToolbarSpacer />
+						<Select
+							selectedKey="{path: 'i18n>langSwitcherLabel', formatter: '.getCurrentLanguageKey'}"
+							autoAdjustWidth="true"
+							change=".onLanguageChange"
+							tooltip="{i18n>langSwitcherLabel}">
+							<core:Item key="en" text="{i18n>langEnglish}" />
+							<core:Item key="fr" text="{i18n>langFrench}" />
+							<core:Item key="de" text="{i18n>langGerman}" />
+							<core:Item key="lb" text="{i18n>langLuxembourgish}" />
+						</Select>
 					</Toolbar>
 				</headerToolbar>
 				<content>
@@ -30,7 +44,26 @@
 						rowHeight="48"
 						class="sapUiContentPadding"
 						employers="{resume>/timeline/employers}"
-						phasePress=".onPhasePress">
+						phasePress=".onPhasePress"
+						i18nTexts="{
+							parts: [
+								{ path: 'i18n>ganttAriaLabel' },
+								{ path: 'i18n>ganttEmptyState' },
+								{ path: 'i18n>ganttLegendParallel' },
+								{ path: 'i18n>hatSapui5' },
+								{ path: 'i18n>hatFullstack' },
+								{ path: 'i18n>hatMobile' },
+								{ path: 'i18n>ganttPresent' },
+								{ path: 'i18n>ganttDurationYears' },
+								{ path: 'i18n>ganttDurationMonths' },
+								{ path: 'i18n>ganttDurationYearsMonths' },
+								{ path: 'i18n>ganttAriaOnTeamAt' },
+								{ path: 'i18n>ganttAriaPrimaryRole' },
+								{ path: 'i18n>ganttAriaAlso' },
+								{ path: 'i18n>ganttAriaParallel' }
+							],
+							formatter: 'formatter.packGanttTexts'
+						}">
 						<rgc:employers>
 							<rgc:ResumeGanttEmployer
 								employerId="{resume>id}"

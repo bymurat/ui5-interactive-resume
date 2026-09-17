@@ -1,5 +1,7 @@
 import type RenderManager from "sap/ui/core/RenderManager";
+import formatter from "../model/formatter";
 import type ResumeGantt from "./ResumeGantt";
+import type { ResumeGanttI18nTexts } from "./ResumeGantt";
 import type ResumeGanttEmployer from "./ResumeGanttEmployer";
 import type ResumeGanttEngagement from "./ResumeGanttEngagement";
 import type ResumeGanttPhase from "./ResumeGanttPhase";
@@ -9,31 +11,27 @@ interface YearMonth {
   month: number;
 }
 
-const MONTH_NAMES = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec"
-];
-
-const HAT_LABELS: Record<string, string> = {
-  sapui5: "SAPUI5 Developer",
-  fullstack: "SAP Full-Stack Developer",
-  mobile: "SAP Mobile Developer"
-};
-
 const HAT_BADGE_ICON: Record<string, string> = {
   sapui5: "sap-icon://web-cam",
   fullstack: "sap-icon://server",
   mobile: "sap-icon://iphone"
+};
+
+// Fallback texts if the i18nTexts property hasn't been bound yet (e.g. first paint
+// before the i18n ResourceModel resolves). English only - real texts come from i18n.
+const FALLBACK_TEXTS: ResumeGanttI18nTexts = {
+  ariaLabel: "Career timeline",
+  emptyState: "No timeline data available.",
+  legendParallel: "Parallel / side engagement",
+  hatLabels: { sapui5: "SAPUI5 Developer", fullstack: "SAP Full-Stack Developer", mobile: "SAP Mobile Developer" },
+  present: "Present",
+  durationYears: "{0}y",
+  durationMonths: "{0}mo",
+  durationYearsMonths: "{0}y {1}mo",
+  ariaOnTeamAt: "{0} on team {1} at {2}, {3} to {4}.",
+  ariaPrimaryRole: " Primary role: {0}.",
+  ariaAlso: " Also: {0}.",
+  ariaParallel: " Parallel / side engagement."
 };
 
 function parseYM(value: string | null | undefined): YearMonth | null {
@@ -59,64 +57,68 @@ function effectiveEnd(end: string | null, current: boolean): YearMonth {
   return parseYM(end) ?? nowYM();
 }
 
-function formatMonth(ym: YearMonth): string {
-  return `${MONTH_NAMES[ym.month - 1]} ${ym.year}`;
-}
-
 function hatClass(hat: string): string {
   return `rgPhase--${hat || "sapui5"}`;
 }
 
-function formatRangeText(start: string, end: string | null, current: boolean): string {
-  const s = parseYM(start);
-  const startStr = s ? formatMonth(s) : "?";
+function formatRangeText(
+  start: string,
+  end: string | null,
+  current: boolean,
+  texts: ResumeGanttI18nTexts
+): string {
+  const startStr = formatter.monthYear(start) || "?";
   if (current || !end) {
-    return `${startStr} → Present`;
+    return `${startStr} → ${texts.present}`;
   }
-  const e = parseYM(end);
-  return `${startStr} → ${e ? formatMonth(e) : "?"}`;
+  return `${startStr} → ${formatter.monthYear(end) || "?"}`;
 }
 
-function formatDurationText(start: string, end: string | null, current: boolean): string {
-  const s = parseYM(start);
-  if (!s) return "";
-  const e = current || !end ? nowYM() : (parseYM(end) ?? nowYM());
-  const totalMonths = Math.max(0, ymIndex(e) - ymIndex(s) + 1);
-  const years = Math.floor(totalMonths / 12);
-  const months = totalMonths % 12;
-  if (years === 0) return `${months}mo`;
-  if (months === 0) return `${years}y`;
-  return `${years}y ${months}mo`;
+function formatDurationText(
+  start: string,
+  end: string | null,
+  current: boolean,
+  texts: ResumeGanttI18nTexts
+): string {
+  return formatter.durationMonths(
+    start,
+    end,
+    current,
+    texts.durationYears,
+    texts.durationMonths,
+    texts.durationYearsMonths
+  );
 }
 
 const ResumeGanttRenderer = {
   apiVersion: 2,
 
   render(rm: RenderManager, oControl: ResumeGantt): void {
+    const texts = oControl.getI18nTexts() ?? FALLBACK_TEXTS;
     const employers = oControl.getEmployers();
     const rowHeight = oControl.getRowHeight();
 
     rm.openStart("div", oControl);
     rm.class("rgGantt");
     rm.attr("role", "grid");
-    rm.attr("aria-label", "Career timeline");
+    rm.attr("aria-label", texts.ariaLabel);
     rm.openEnd();
 
     if (!employers.length) {
       rm.openStart("div").class("rgGantt--empty").openEnd();
-      rm.text("No timeline data available.");
+      rm.text(texts.emptyState);
       rm.close("div");
       rm.close("div");
       return;
     }
 
     if (oControl.getShowLegend()) {
-      renderLegend(rm);
+      renderLegend(rm, texts);
     }
 
     rm.openStart("div").class("rgSwimlanes").openEnd();
     for (const employer of employers) {
-      renderEmployerCard(rm, employer, rowHeight);
+      renderEmployerCard(rm, employer, rowHeight, texts);
     }
     rm.close("div");
 
@@ -124,14 +126,14 @@ const ResumeGanttRenderer = {
   }
 };
 
-function renderLegend(rm: RenderManager): void {
+function renderLegend(rm: RenderManager, texts: ResumeGanttI18nTexts): void {
   rm.openStart("div").class("rgLegend").attr("aria-hidden", "true").openEnd();
-  for (const hat of ["sapui5", "fullstack", "mobile"]) {
+  for (const hat of ["sapui5", "fullstack", "mobile"] as const) {
     rm.openStart("span").class("rgLegendItem").class(`rgLegendItem--${hat}`).openEnd();
     rm.openStart("span").class("rgLegendSwatch").openEnd();
     rm.close("span");
     rm.openStart("span").class("rgLegendLabel").openEnd();
-    rm.text(HAT_LABELS[hat]);
+    rm.text(texts.hatLabels[hat]);
     rm.close("span");
     rm.close("span");
   }
@@ -139,7 +141,7 @@ function renderLegend(rm: RenderManager): void {
   rm.openStart("span").class("rgLegendSwatch").openEnd();
   rm.close("span");
   rm.openStart("span").class("rgLegendLabel").openEnd();
-  rm.text("Parallel / side engagement");
+  rm.text(texts.legendParallel);
   rm.close("span");
   rm.close("span");
   rm.close("div");
@@ -148,7 +150,8 @@ function renderLegend(rm: RenderManager): void {
 function renderEmployerCard(
   rm: RenderManager,
   employer: ResumeGanttEmployer,
-  rowHeight: number
+  rowHeight: number,
+  texts: ResumeGanttI18nTexts
 ): void {
   const empStart = parseYM(employer.getProperty("start") as string);
   const empEnd = effectiveEnd(
@@ -185,12 +188,14 @@ function renderEmployerCard(
   const range = formatRangeText(
     employer.getProperty("start") as string,
     employer.getProperty("end") as string | null,
-    employer.getProperty("current") as boolean
+    employer.getProperty("current") as boolean,
+    texts
   );
   const duration = formatDurationText(
     employer.getProperty("start") as string,
     employer.getProperty("end") as string | null,
-    employer.getProperty("current") as boolean
+    employer.getProperty("current") as boolean,
+    texts
   );
 
   rm.openStart("span").class("rgEmployerHeader__meta").openEnd();
@@ -204,7 +209,7 @@ function renderEmployerCard(
 
   // ----- engagement rows (scoped to this employer's range) -----
   for (const engagement of employer.getEngagements()) {
-    renderEngagementRow(rm, employer, engagement, axisStartIdx, totalMonths, rowHeight);
+    renderEngagementRow(rm, employer, engagement, axisStartIdx, totalMonths, rowHeight, texts);
   }
 
   rm.close("div");
@@ -237,7 +242,8 @@ function renderEngagementRow(
   engagement: ResumeGanttEngagement,
   axisStartIdx: number,
   totalMonths: number,
-  baseRowHeight: number
+  baseRowHeight: number,
+  texts: ResumeGanttI18nTexts
 ): void {
   const isParallel = engagement.getProperty("parallel") as boolean;
 
@@ -271,7 +277,7 @@ function renderEngagementRow(
   // ----- track -----
   rm.openStart("div").class("rgTrack").openEnd();
   for (const phase of engagement.getPhases()) {
-    renderPhase(rm, employer, engagement, phase, axisStartIdx, totalMonths, isParallel);
+    renderPhase(rm, employer, engagement, phase, axisStartIdx, totalMonths, isParallel, texts);
   }
   rm.close("div");
 
@@ -285,7 +291,8 @@ function renderPhase(
   phase: ResumeGanttPhase,
   axisStartIdx: number,
   totalMonths: number,
-  isParallel: boolean
+  isParallel: boolean,
+  texts: ResumeGanttI18nTexts
 ): void {
   const start = parseYM(phase.getProperty("start") as string);
   if (!start) return;
@@ -301,13 +308,31 @@ function renderPhase(
   const team = phase.getProperty("team") as string;
   const hat = phase.getProperty("hat") as string;
   const additionalHats = (phase.getProperty("additionalHats") as string[] | null) ?? [];
-  const ariaLabel = `${role} on team ${team} at ${engagement.getProperty("client")}, ${formatMonth(start)} to ${phase.getProperty("current") ? "present" : formatMonth(end)}. Primary role: ${HAT_LABELS[hat] ?? hat}${additionalHats.length ? `. Also: ${additionalHats.map((h) => HAT_LABELS[h] ?? h).join(", ")}` : ""}${isParallel ? ". Parallel / side engagement." : ""}.`;
+  const isCurrent = phase.getProperty("current") as boolean;
+
+  const primaryRoleLabel = texts.hatLabels[hat as keyof typeof texts.hatLabels] ?? hat;
+  let ariaLabel = texts.ariaOnTeamAt
+    .replace("{0}", role)
+    .replace("{1}", team)
+    .replace("{2}", String(engagement.getProperty("client")))
+    .replace("{3}", formatter.monthYear(phase.getProperty("start") as string) || "?")
+    .replace("{4}", isCurrent ? texts.present : formatter.monthYear(phase.getProperty("end") as string) || "?");
+  ariaLabel += texts.ariaPrimaryRole.replace("{0}", primaryRoleLabel);
+  if (additionalHats.length) {
+    const alsoLabels = additionalHats
+      .map((h) => texts.hatLabels[h as keyof typeof texts.hatLabels] ?? h)
+      .join(", ");
+    ariaLabel += texts.ariaAlso.replace("{0}", alsoLabels);
+  }
+  if (isParallel) {
+    ariaLabel += texts.ariaParallel;
+  }
 
   rm.openStart("div", phase);
   rm.class("rgPhase");
   rm.class(hatClass(hat));
   if (isParallel) rm.class("rgPhase--parallel");
-  if (phase.getProperty("current")) rm.class("rgPhase--current");
+  if (isCurrent) rm.class("rgPhase--current");
   rm.attr("role", "gridcell");
   rm.attr("tabindex", "0");
   rm.attr("data-phase-id", phase.getProperty("phaseId") as string);
@@ -330,7 +355,7 @@ function renderPhase(
     if (icon) {
       rm.icon(icon, ["rgPhaseBadge", `rgPhaseBadge--${extra}`], {
         "aria-hidden": "true",
-        title: HAT_LABELS[extra] ?? extra
+        title: texts.hatLabels[extra as keyof typeof texts.hatLabels] ?? extra
       });
     }
   }

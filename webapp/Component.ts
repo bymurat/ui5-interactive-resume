@@ -1,5 +1,6 @@
 import UIComponent from "sap/ui/core/UIComponent";
 import Device from "sap/ui/Device";
+import Localization from "sap/base/i18n/Localization";
 import models from "./model/models";
 
 /**
@@ -16,6 +17,9 @@ export default class Component extends UIComponent {
   public init(): void {
     // call the base component's init function
     super.init();
+
+    // reflect the resolved UI5 language on <html lang="..."> for accessibility/SEO
+    document.documentElement.lang = Localization.getLanguage();
 
     // create the device model
     this.setModel(models.createDeviceModel(), "device");

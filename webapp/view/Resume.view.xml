@@ -51,6 +51,16 @@
 							<Text text="{resume>/profile/title}" />
 						</uxap:snappedContent>
 						<uxap:actions>
+							<Select
+								selectedKey="{path: 'i18n>langSwitcherLabel', formatter: '.getCurrentLanguageKey'}"
+								autoAdjustWidth="true"
+								change=".onLanguageChange"
+								tooltip="{i18n>langSwitcherLabel}">
+								<core:Item key="en" text="{i18n>langEnglish}" />
+								<core:Item key="fr" text="{i18n>langFrench}" />
+								<core:Item key="de" text="{i18n>langGerman}" />
+								<core:Item key="lb" text="{i18n>langLuxembourgish}" />
+							</Select>
 							<Button
 								text="{i18n>contactAction}"
 								type="Emphasized"
@@ -128,7 +138,26 @@
 											id="resumeGanttInline"
 											rowHeight="42"
 											employers="{resume>/timeline/employers}"
-											phasePress=".onPhasePress">
+										phasePress=".onPhasePress"
+										i18nTexts="{
+											parts: [
+												{ path: 'i18n>ganttAriaLabel' },
+												{ path: 'i18n>ganttEmptyState' },
+												{ path: 'i18n>ganttLegendParallel' },
+												{ path: 'i18n>hatSapui5' },
+												{ path: 'i18n>hatFullstack' },
+												{ path: 'i18n>hatMobile' },
+												{ path: 'i18n>ganttPresent' },
+												{ path: 'i18n>ganttDurationYears' },
+												{ path: 'i18n>ganttDurationMonths' },
+												{ path: 'i18n>ganttDurationYearsMonths' },
+												{ path: 'i18n>ganttAriaOnTeamAt' },
+												{ path: 'i18n>ganttAriaPrimaryRole' },
+												{ path: 'i18n>ganttAriaAlso' },
+												{ path: 'i18n>ganttAriaParallel' }
+											],
+											formatter: 'formatter.packGanttTexts'
+										}">
 											<rgc:employers>
 												<rgc:ResumeGanttEmployer
 													employerId="{resume>id}"
@@ -206,7 +235,7 @@
 									<List
 										items="{resume>/education}"
 										showSeparators="Inner"
-										noDataText="No education entries yet.">
+										noDataText="{i18n>noEducationEntries}">
 										<CustomListItem>
 											<HBox alignItems="Center" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginTop sapUiTinyMarginBottom">
 												<Avatar
@@ -232,7 +261,8 @@
 															parts: [
 																{ path: 'resume>start' },
 																{ path: 'resume>end' },
-																{ value: false }
+															{ value: false },
+															{ path: 'i18n>ganttPresent' }
 															],
 															formatter: 'formatter.dateRange'
 														} · {resume>city}"
@@ -249,7 +279,7 @@
 									<List
 										items="{resume>/certifications}"
 										showSeparators="Inner"
-										noDataText="No certifications yet.">
+										noDataText="{i18n>noCertifications}">
 										<CustomListItem>
 											<HBox alignItems="Center" justifyContent="SpaceBetween" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginTop sapUiTinyMarginBottom">
 												<HBox alignItems="Center">
@@ -281,7 +311,7 @@
 									<List
 										items="{resume>/languages}"
 										showSeparators="Inner"
-										noDataText="No languages yet.">
+										noDataText="{i18n>noLanguages}">
 										<StandardListItem
 											icon="sap-icon://world"
 											title="{resume>name}"
