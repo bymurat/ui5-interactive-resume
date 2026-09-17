@@ -55,18 +55,18 @@ export default class Resume extends BaseController {
 		const { phase, engagementClient, employerName } = found;
 
 		this.detailModel.setData({
-			role: phase.getProperty("role"),
-			team: phase.getProperty("team"),
-			hat: phase.getProperty("hat"),
-			additionalHats: phase.getProperty("additionalHats") ?? [],
+			role: phase.getProperty("role") as string,
+			team: phase.getProperty("team") as string,
+			hat: phase.getProperty("hat") as string,
+			additionalHats: (phase.getProperty("additionalHats") as string[] | undefined) ?? [],
 			client: engagementClient,
 			employer: employerName,
-			start: phase.getProperty("start"),
-			end: phase.getProperty("end"),
-			current: phase.getProperty("current"),
-			summary: phase.getProperty("summary"),
-			achievements: phase.getProperty("achievements") ?? [],
-			technologies: phase.getProperty("technologies") ?? [],
+			start: phase.getProperty("start") as string,
+			end: phase.getProperty("end") as string | null,
+			current: phase.getProperty("current") as boolean,
+			summary: phase.getProperty("summary") as string,
+			achievements: (phase.getProperty("achievements") as string[] | undefined) ?? [],
+			technologies: (phase.getProperty("technologies") as string[] | undefined) ?? [],
 		});
 
 		if (!this.popover) {

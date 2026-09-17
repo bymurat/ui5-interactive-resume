@@ -97,6 +97,7 @@ export default class ResumeGantt extends Control {
   }
 
   private handleActivation(target: HTMLElement): void {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- tsc requires this: closest() resolves to Element here, but domRef must be HTMLElement
     const phaseEl = target?.closest?.("[data-phase-id]") as HTMLElement | null;
     if (!phaseEl) {
       return;
@@ -115,7 +116,7 @@ export default class ResumeGantt extends Control {
       return;
     }
     const all = Array.from(root.querySelectorAll<HTMLElement>("[data-phase-id]"));
-    const idx = all.indexOf(current.closest("[data-phase-id]") as HTMLElement);
+    const idx = all.indexOf(current.closest("[data-phase-id]"));
     if (idx === -1) {
       return;
     }
