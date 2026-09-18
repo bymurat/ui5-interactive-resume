@@ -634,13 +634,6 @@
         "primary": true
       },
       {
-        "type": "phone",
-        "label": "Telefon",
-        "value": "+352 691 373 199",
-        "href": "tel:+352691373199",
-        "icon": "sap-icon://phone"
-      },
-      {
         "type": "teams",
         "label": "Microsoft Teams",
         "value": "aydogdu.murat90@gmail.com",
